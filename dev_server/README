@@ -96,3 +96,12 @@ kvdb默认数据存在内存中，dev_server.py进程结束时，数据会全部
 请使用如下命令行启动dev_server.py 
 
     $ dev_server.py --kvdb-file=/path/to/kvdb/local/file
+
+启用多运行环境区分
+----------------
+
+SAE使用SERVER_SOFTWARE（正式环境为direwolf/0.1，开发环境未设置改值）来区分运行环境，但本地测试应用的多平台支持（BAE、SAE、LOCAL）时需要用到这个变量来区分，请使用如下命令行启动dev_server.py 
+
+    $ dev_server.py --m
+
+增加该启动项后会增加SERVER_SOFTWARE环境变量定义，方便环境区分。

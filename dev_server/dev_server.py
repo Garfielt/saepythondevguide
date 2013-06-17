@@ -59,6 +59,10 @@ def setup_sae_environ(conf):
 
     if conf.storage:
         os.environ['sae.storage.path'] = os.path.abspath(conf.storage)
+
+    # Multiple runtime test enable
+    if conf.multruntime:
+        os.environ['SERVER_SOFTWARE'] = 'direwolf/1.0'
         
     # Add custom environment variable
     os.environ['HTTP_HOST'] = '%s:%d' % (conf.host, conf.port)
@@ -188,6 +192,7 @@ if __name__ == '__main__':
     parser.add_option("--mysql", dest="mysql", help="Mysql configuration: user:password@host:port")
     parser.add_option("--storage-path", dest="storage", help="Directory used as local stoarge")
     parser.add_option("--kvdb-file", dest="kvdb", help="File to save kvdb data")
+    parser.add_option("--m", action="store_true", dest="multruntime", help="Multiple runtime test enable")
     (options, args) = parser.parse_args()
 
     main(options)
