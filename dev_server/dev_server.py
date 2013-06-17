@@ -63,6 +63,7 @@ def setup_sae_environ(conf):
     # Multiple runtime test enable
     if conf.multruntime:
         os.environ['SERVER_SOFTWARE'] = 'direwolf/1.0'
+        print 'Multiple runtime test enable'
         
     # Add custom environment variable
     os.environ['HTTP_HOST'] = '%s:%d' % (conf.host, conf.port)
